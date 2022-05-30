@@ -84,6 +84,7 @@ CREATE TABLE `portfolio` (
   `비중` int DEFAULT '0',
   `페어` varchar(50) DEFAULT 'KRW',
   PRIMARY KEY (`갱신시각`)
+  forien key("갱신시각") references asset("갱신시각") on delete cascade
 );
 
 CREATE TABLE `history` (
@@ -93,6 +94,7 @@ CREATE TABLE `history` (
   `총보유자산` int DEFAULT '0',
   `포트폴리오` varchar(250) DEFAULT NULL,
   PRIMARY KEY (`갱신시각`)
+  forien key("갱신시각") references asset("갱신시각") on delete cascade
 );
 
 CREATE TABLE `component_history` (
@@ -102,4 +104,5 @@ CREATE TABLE `component_history` (
   `증감률` int DEFAULT '0',
   `현재가` int DEFAULT '0',
   PRIMARY KEY (`갱신시각`)
+  forien key("갱신시각") references asset("갱신시각") on delete cascade
 );
