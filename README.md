@@ -106,3 +106,5 @@ CREATE TABLE `component_history` (
   PRIMARY KEY (`갱신시각`)
   forien key("갱신시각") references asset("갱신시각") on delete cascade
 );
+
+![image](https://user-images.githubusercontent.com/75199215/174926628-98eca6bc-6700-49f1-80a2-23b28bf9c492.png)
