@@ -3,7 +3,7 @@ Database project respository
 
 테이블 생성 script
 
-CREATE TABLE `api_key` (
+CREATE TABLE `api_key` (  
   `PUBLIC_KEY` varchar(150) NOT NULL,
   `SECRET_KEY` varchar(150) NOT NULL,
   PRIMARY KEY (`SECRET_KEY`)
