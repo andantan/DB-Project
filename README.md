@@ -116,14 +116,57 @@ CREATE TABLE `component_history` (
   PRIMARY KEY (`갱신시각`)  
   forien key("갱신시각") references asset("갱신시각") on delete cascade  
 );  
+
+변경 (2022-06-22 외래케 제거 및 정규화 완료)
+
+create table API_KEY(  
+        PUBLIC_KEY VARCHAR(100) NOT NULL,  
+        SECRET_KEY VARCHAR(100) NOT NULL,  
+        PRIMARY KEY(SECRET_KEY)  
+        );  
   
-![image](https://user-images.githubusercontent.com/75199215/174926628-98eca6bc-6700-49f1-80a2-23b28bf9c492.png)
+create table ASSET (  
+       total_asset INT DEFAULT 0,  
+       KRW INT DEFAULT 0,  
+       total_purchase_amount INT DEFAULT 0,  
+       total_evaluate_amount INT DEFAULT 0,  
+       total_return_amount INT DEFAULT 0,  
+       total_return_rate VARCHAR(50) DEFAULT "0%",  
+       update_time DATETIME NOT NULL,  
+       PRIMARY KEY(update_time)  
+       );
+
+ CREATE TABLE TICKER_FORM (
+       holdings FLOAT(20, 8) DEFAULT 0.0,
+       bid_price FLOAT(10, 4) DEFAULT 0.0,
+       market_price FLOAT(10, 4) DEFAULT 0.0,
+       evaluate_price FLOAT(10, 4) DEFAULT 0.0,
+       evaluate_return INT DEFAULT 0,
+       return_rate VARCHAR(50) DEFAULT "0%",
+       weight VARCHAR(10) DEFAULT "0%",
+       delta_return_rate VARCHAR(50) DEFAULT "0%",
+       update_time DATETIME NOT NULL,
+       PRIMARY KEY(update_time)
+       );  
+ => 매매 릴레이션의 포트폴리오의 SYMBOL 구성요소들 중   
+      해당 SYMBOL 테이블이 존재할 시 데이터 삽입, 존재하지 않을 시 테이블 생성  
+      ex) 매매.포트폴리오 = (BTC, ETH, XRP) 일 때 XRP 테이블만 존재할 시   
+           BTC, ETH 테이블 생성 후 각각 시장 데이터 조회 후 데이터 삽입  
+  
+CREATE TABLE history(  
+       portfolio VARCHAR(500) DEFAULT "()",  
+       update_time DATETIME NOT NULL,  
+       PRIMARY KEY(update_time)  
+       );  
+    
+![1](https://user-images.githubusercontent.com/75199215/175197130-8a116a97-0404-4a25-a626-9759a82ddc40.png)
+
   
 릴레이션  
 API_Key 릴레이션(Public_Key, Secret_Key(PRI))  
-자산 릴레이션(총수익률, 총평가금액, 총매수금액, 총보유자산, 총평가손익, 보유KRW, 갱신시각(PRI))  
+자산 릴레이션(총수익률, 총평가금액, 총매수금액, 총보유자산, 총평가손익, 보유KRW, 수익변화율, 갱신시각(PRI))  
 매매 릴레이션(포트폴리오, 갱신시각(PRI))  
-Ticker 릴레이션(수익률, 현재가, 보유개수, 평가손익, 매수금액, 평가금액, 갱신시각(PRI))  
+Ticker 릴레이션(수익률, 현재가, 보유개수, 평가손익, 매수금액, 평가금액, 비중, 수익변화율, 갱신시각(PRI))  
     -> 매매 릴레이션의 포트폴리오의 SYMBOL 구성요소들 중 해당 SYMBOL 테이블이 존재할 시 데이터 삽입, 존재하지 않을 시 테이블 생성  
-자산변화 릴레이션(수익률변화율, WalletOrTicker, 갱신시각(PRI))  
+portfolio 릴레이션(포트폴리오, 갱신시각(PRI))  
   
