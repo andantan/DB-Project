@@ -1,7 +1,7 @@
 # DB-Project
 Database project respository
 
-테이블 생성 script
+테이블 생성 초기 script
 
 CREATE TABLE `api_key` (  
   `PUBLIC_KEY` varchar(150) NOT NULL,  
@@ -117,6 +117,8 @@ CREATE TABLE `component_history` (
   forien key("갱신시각") references asset("갱신시각") on delete cascade  
 );  
 
+============================================================================  
+
 변경 (2022-06-22 외래케 제거 및 정규화 완료)
 
 create table API_KEY(  
@@ -139,7 +141,7 @@ create table ASSET (
  CREATE TABLE TICKER_FORM (
        holdings FLOAT(20, 8) DEFAULT 0.0,
        bid_price FLOAT(10, 4) DEFAULT 0.0,
-       market_price FLOAT(10, 4) DEFAULT 0.0,
+       market_price FLOAT(50, 4) DEFAULT 0.0,
        evaluate_price FLOAT(10, 4) DEFAULT 0.0,
        evaluate_return INT DEFAULT 0,
        return_rate VARCHAR(50) DEFAULT "0%",
@@ -158,9 +160,12 @@ CREATE TABLE history(
        update_time DATETIME NOT NULL,  
        PRIMARY KEY(update_time)  
        );  
+       
+============================================================================  
     
 ![1](https://user-images.githubusercontent.com/75199215/175197130-8a116a97-0404-4a25-a626-9759a82ddc40.png)
 
+============================================================================  
   
 릴레이션  
 API_Key 릴레이션(Public_Key, Secret_Key(PRI))  
