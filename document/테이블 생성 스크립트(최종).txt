@@ -1,0 +1,35 @@
+create table API_KEY(
+        PUBLIC_KEY VARCHAR(100) NOT NULL,
+        SECRET_KEY VARCHAR(100) NOT NULL,
+        PRIMARY KEY(SECRET_KEY)
+        );
+
+create table ASSET (
+       total_asset INT DEFAULT 0,
+       KRW INT DEFAULT 0,
+       total_purchase_amount INT DEFAULT 0,
+       total_evaluate_amount INT DEFAULT 0,
+       total_return_amount INT DEFAULT 0,
+       total_return_rate VARCHAR(50) DEFAULT "0%",
+       update_time DATETIME NOT NULL,
+       PRIMARY KEY(update_time)
+       );
+
+ CREATE TABLE TICKER_FORM (
+       holdings FLOAT(20, 8) DEFAULT 0.0,
+       bid_price FLOAT(10, 4) DEFAULT 0.0,
+       market_price FLOAT(15, 4) DEFAULT 0.0,
+       evaluate_price FLOAT(10, 4) DEFAULT 0.0,
+       evaluate_return INT DEFAULT 0,
+       return_rate VARCHAR(50) DEFAULT "0%",
+       weight VARCHAR(10) DEFAULT "0%",
+       delta_return_rate VARCHAR(50) DEFAULT "0%",
+       update_time DATETIME NOT NULL,
+       PRIMARY KEY(update_time)
+       );
+
+CREATE TABLE history(
+       portfolio VARCHAR(500) DEFAULT "()",
+       update_time DATETIME NOT NULL,
+       PRIMARY KEY(update_time)
+       );
