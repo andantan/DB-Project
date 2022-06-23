@@ -139,16 +139,16 @@ create table ASSET (
        );
 
  CREATE TABLE TICKER_FORM (
-       holdings FLOAT(20, 8) DEFAULT 0.0,
-       bid_price FLOAT(10, 4) DEFAULT 0.0,
-       market_price FLOAT(50, 4) DEFAULT 0.0,
-       evaluate_price FLOAT(10, 4) DEFAULT 0.0,
-       evaluate_return INT DEFAULT 0,
-       return_rate VARCHAR(50) DEFAULT "0%",
-       weight VARCHAR(10) DEFAULT "0%",
-       delta_return_rate VARCHAR(50) DEFAULT "0%",
-       update_time DATETIME NOT NULL,
-       PRIMARY KEY(update_time)
+       holdings FLOAT(20, 8) DEFAULT 0.0,  
+       bid_price FLOAT(10, 4) DEFAULT 0.0,  
+       market_price FLOAT(50, 4) DEFAULT 0.0,  
+       evaluate_price FLOAT(10, 4) DEFAULT 0.0,  
+       evaluate_return INT DEFAULT 0,  
+       return_rate VARCHAR(50) DEFAULT "0%",  
+       weight VARCHAR(10) DEFAULT "0%",  
+       delta_return_rate VARCHAR(50) DEFAULT "0%",  
+       update_time DATETIME NOT NULL,  
+       PRIMARY KEY(update_time)  
        );  
  => 매매 릴레이션의 포트폴리오의 SYMBOL 구성요소들 중   
       해당 SYMBOL 테이블이 존재할 시 데이터 삽입, 존재하지 않을 시 테이블 생성  
