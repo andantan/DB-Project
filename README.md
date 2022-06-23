@@ -154,6 +154,23 @@ create table ASSET (
       해당 SYMBOL 테이블이 존재할 시 데이터 삽입, 존재하지 않을 시 테이블 생성  
       ex) 매매.포트폴리오 = (BTC, ETH, XRP) 일 때 XRP 테이블만 존재할 시   
            BTC, ETH 테이블 생성 후 각각 시장 데이터 조회 후 데이터 삽입  
+           
+         if STOCKED_TICKER_SYMBOL not in tables:  
+            sql = f'''  
+                    CREATE TABLE {STOCKED_TICKER_SYMBOL} (  
+                        holdings FLOAT(20, 8) DEFAULT 0.0,  
+                        bid_price FLOAT(10, 4) DEFAULT 0.0,  
+                        market_price FLOAT(15, 4) DEFAULT 0.0,  
+                        evaluate_price FLOAT(10, 4) DEFAULT 0.0,  
+                        evaluate_return INT DEFAULT 0,  
+                        return_rate VARCHAR(50) DEFAULT "0%",  
+                        weight VARCHAR(10) DEFAULT "0%",  
+                        delta_return_rate VARCHAR(50) DEFAULT "0%",  
+                        update_time DATETIME NOT NULL,  
+                        PRIMARY KEY(update_time)  
+                        );  
+                    '''  
+                
   
 CREATE TABLE history(  
        portfolio VARCHAR(500) DEFAULT "()",  
