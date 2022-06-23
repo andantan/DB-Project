@@ -8,11 +8,11 @@ from pprint import pprint
 
 API_KEY = {
     "ACCESS_KEY" : "LAxtuQAXYD0kb79FksZxIHTt85lL9UwLdbTN9j9Z",
-    "SECRET_KEY" : "VMocgGBMrwVU7f3wws8en06LbfiaxuCqXFJqxQZb",
+    "SECRET_KEY" : "VMocgGBMrwVU7f3wws8en06LbfiaxuCqXFJqxQZb", # IP related Key
 }
 
 MYSQL_CONNECTOR = {
-    "PASSWORD" : "wjsrbqls123!",
+    "PASSWORD" : "1234!",
     "DATABASE" : "upbit"
 }
 
